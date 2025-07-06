@@ -259,7 +259,8 @@ input[type="range"]::-moz-range-thumb
 	position		: relative;
 	white-space		: pre-wrap;
 	overflow-x		: auto;
-	overflow-y		: hidden;
+	overflow-y		: auto;
+	min-height		: calc(6 * 1.3em + 20px);
 }
 
 .copy-btn
