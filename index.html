@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cos Palette Designer</title>
+</head>
+<body>
+	<div class="theme-toggle">
+		<button id="themeToggle" class="theme-btn" title="Toggle theme">🌙</button>
+	</div>
+	<div class="container">
+		<div class="preview-section">
+			<canvas id="previewCanvas" class="preview-canvas"></canvas>
+		</div>
+
+		<div class="controls">
+			<div class="control-group">
+				<h3>Base Tone (a)</h3>
+				<div class="slider-container">
+					<label>Red</label>
+					<div class="slider-row">
+						<input type="range" id="aR" min="0" max="1" step="0.01" value="0.5">
+						<input type="number" class="value-display" id="aRVal" min="0" max="1" step="0.01" value="0.50">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Green</label>
+					<div class="slider-row">
+						<input type="range" id="aG" min="0" max="1" step="0.01" value="0.5">
+						<input type="number" class="value-display" id="aGVal" min="0" max="1" step="0.01" value="0.50">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Blue</label>
+					<div class="slider-row">
+						<input type="range" id="aB" min="0" max="1" step="0.01" value="0.5">
+						<input type="number" class="value-display" id="aBVal" min="0" max="1" step="0.01" value="0.50">
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<h3>Amplitude (b)</h3>
+				<div class="slider-container">
+					<label>Red</label>
+					<div class="slider-row">
+						<input type="range" id="bR" min="0" max="1" step="0.01" value="0.5">
+						<input type="number" class="value-display" id="bRVal" min="0" max="1" step="0.01" value="0.50">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Green</label>
+					<div class="slider-row">
+						<input type="range" id="bG" min="0" max="1" step="0.01" value="0.5">
+						<input type="number" class="value-display" id="bGVal" min="0" max="1" step="0.01" value="0.50">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Blue</label>
+					<div class="slider-row">
+						<input type="range" id="bB" min="0" max="1" step="0.01" value="0.5">
+						<input type="number" class="value-display" id="bBVal" min="0" max="1" step="0.01" value="0.50">
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<h3>Frequency (c)</h3>
+				<div class="slider-container">
+					<label>Red</label>
+					<div class="slider-row">
+						<input type="range" id="cR" min="0" max="3" step="0.1" value="1.0">
+						<input type="number" class="value-display" id="cRVal" min="0" max="3" step="0.1" value="1.0">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Green</label>
+					<div class="slider-row">
+						<input type="range" id="cG" min="0" max="3" step="0.1" value="1.0">
+						<input type="number" class="value-display" id="cGVal" min="0" max="3" step="0.1" value="1.0">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Blue</label>
+					<div class="slider-row">
+						<input type="range" id="cB" min="0" max="3" step="0.1" value="1.0">
+						<input type="number" class="value-display" id="cBVal" min="0" max="3" step="0.1" value="1.0">
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<h3>Phase Shift (d)</h3>
+				<div class="slider-container">
+					<label>Red</label>
+					<div class="slider-row">
+						<input type="range" id="dR" min="0" max="1" step="0.01" value="0.0">
+						<input type="number" class="value-display" id="dRVal" min="0" max="1" step="0.01" value="0.00">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Green</label>
+					<div class="slider-row">
+						<input type="range" id="dG" min="0" max="1" step="0.01" value="0.33">
+						<input type="number" class="value-display" id="dGVal" min="0" max="1" step="0.01" value="0.33">
+					</div>
+				</div>
+				<div class="slider-container">
+					<label>Blue</label>
+					<div class="slider-row">
+						<input type="range" id="dB" min="0" max="1" step="0.01" value="0.66">
+						<input type="number" class="value-display" id="dBVal" min="0" max="1" step="0.01" value="0.66">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="code-output" id="codeOutput">
+vec3 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) 
+{
+	return a + b*cos( 6.28318*(c*t+d) );
+}
+
+vec3 myPalette = pal(t, vec3(0.50, 0.50, 0.50), vec3(0.50, 0.50, 0.50), vec3(1.0, 1.0, 1.0), vec3(0.00, 0.33, 0.66));
+			<button class="copy-btn" title="Copy code">📋</button>
+		</div>
+
+		<div class="footer">
+			<div class="footer-content">
+				<p>&copy; 2025 <a href="https://fenixfox-studios.com/" target="_blank" rel="noopener noreferrer">FenixFoxStudios</a> • 
+				<a href="https://twitter.com/mlsprwr" target="_blank" rel="noopener noreferrer">Twitter</a> • 
+				<a href="https://github.com/MilesTails01/pal_generator" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+			</div>
+		</div>
+	</div>
+
+	<script type="module" src="/src/main.js"></script>
+</body>
+</html> 
